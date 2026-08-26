@@ -1,0 +1,112 @@
+<h2>World Copies Everything</h2>
+<p><strong>English</strong> — A Fabric port of the Bedrock pack <em>World Copies Everything</em>: every block you place, break, or change becomes part of an infinite 16×16 repeating pattern. Walk thousands of blocks away — as new chunks load, the pattern is stamped into the terrain.</p>
+<p><strong>Português (Brasil)</strong> — Port Fabric do pack Bedrock <em>World Copies Everything</em>: cada bloco que você coloca, quebra ou altera entra num padrão infinito que se repete a cada 16×16. Ande milhares de blocos — ao carregar chunks novos, o padrão é aplicado no terreno.</p>
+
+<hr />
+
+<h2>English</h2>
+<h3>How it works</h3>
+<p>There is no finite grid of copies. Each edit is stored once at a canonical cell <code>(x % 16, y, z % 16)</code>. A patrol then stamps that pattern into loaded chunks around every player. Chunks far away are not skipped forever — they receive the pattern the moment you travel there.</p>
+<ul>
+<li>Repeat interval: <strong>16 blocks</strong> (one chunk)</li>
+<li>Live stamp radius: <strong>24 chunks</strong> around each player (loaded chunks only)</li>
+<li>Pattern cap: <strong>12,000</strong> cells (oldest edits are forgotten first)</li>
+<li>Saved with the world (every ~10 seconds)</li>
+</ul>
+<p><strong>Chests copy as empty blocks</strong> — inventory stays local so copies never duplicate items.<br />
+<strong>Paintings are not copied.</strong><br />
+<strong>Mobs</strong> are mirrored only into the 8 neighbouring cells, last 60 seconds, cap at <strong>64</strong> live clones, and are never written to the world save.</p>
+<h3>Features</h3>
+<ul>
+<li>Place, break, and interact (doors, levers, stripping logs, tilling, …)</li>
+<li>Doors, beds, and tall plants as atomic pairs</li>
+<li>Flowing water/lava, waterlogging</li>
+<li>Redstone copies the <strong>switch</strong>; each copy's pistons fire on their own</li>
+<li>Banners, heads, decorated pots, lecterns, jukeboxes, spawners, signs</li>
+<li>Item frames (place, item, rotation, break)</li>
+<li>Nether and End portals</li>
+<li>Bonemeal trees, fire you light, crop/sapling growth</li>
+<li>Falling blocks only if they stay standing</li>
+<li>Scaffolding / cane / cactus columns without item rain</li>
+<li>Explosions and primed TNT</li>
+<li>Mirror-drop suppression</li>
+<li>Jukebox echo on nearby copies</li>
+<li>Mob clones (natural / breeding / spawner / spawn egg)</li>
+</ul>
+<h3>Commands (cheats / OP)</h3>
+<ul>
+<li><code>/wce help</code> — command list</li>
+<li><code>/wce pause</code> — stop recording and stamping</li>
+<li><code>/wce resume</code> — start copying again</li>
+<li><code>/wce reset</code> — forget the pattern (already-copied blocks stay)</li>
+<li><code>/wce status</code> — state, edits, portals, chests, clones</li>
+<li><code>/wce verify</code> — fix stale records in a 16-block radius</li>
+</ul>
+<p>Language: <strong>English</strong> by default. If the game language is <strong>Português (Brasil)</strong>, chat uses Brazilian Portuguese.</p>
+<h3>Install</h3>
+<p>Pick the jar that matches your Minecraft version: <strong>1.20.1</strong> (release), <strong>1.21.1</strong> (release), <strong>26.2</strong> (release), <strong>26.3</strong> snapshot / alpha.9 (alpha).</p>
+<ol>
+<li>Fabric Loader</li>
+<li>Fabric API for that same Minecraft version</li>
+<li>Drop this jar into <code>mods/</code></li>
+</ol>
+<p>Works in singleplayer and on dedicated servers (server-side). Clients do not need the mod to join a server.</p>
+<p>Copying is throttled (200 block writes every 4 ticks in a 24-chunk radius) so the integrated server keeps a playable tick rate.</p>
+<h3>Credits</h3>
+<p>Original Bedrock pack by <strong>TheLake</strong> — ThreeDonkeys studio.<br />
+Fabric port published by <strong>mml</strong>.<br />
+License: <strong>MIT</strong></p>
+
+<hr />
+
+<h2>Português (Brasil)</h2>
+<h3>Como funciona</h3>
+<p>Não existe uma grelha finita de cópias. Cada alteração é gravada uma vez na célula canónica <code>(x % 16, y, z % 16)</code>. Uma patrulha aplica esse padrão nos chunks carregados à volta de cada jogador. Chunks longe não ficam de fora para sempre — recebem o padrão quando você chega lá.</p>
+<ul>
+<li>Intervalo: <strong>16 blocos</strong> (um chunk)</li>
+<li>Raio ao vivo: <strong>24 chunks</strong> (só chunks carregados)</li>
+<li>Limite do padrão: <strong>12.000</strong> células (as mais antigas são esquecidas primeiro)</li>
+<li>Persistente no save do mundo (~a cada 10 s)</li>
+</ul>
+<p><strong>Baús copiam vazios</strong> — o inventário fica só no original, para não duplicar itens.<br />
+<strong>Pinturas não são copiadas.</strong><br />
+<strong>Mobs</strong> só nas 8 células vizinhas, duram 60 s, no máximo <strong>64</strong> clones vivos, e não entram no save.</p>
+<h3>Recursos</h3>
+<ul>
+<li>Colocar, quebrar e interagir (portas, alavancas, strip, enxada, …)</li>
+<li>Portas, camas e plantas altas em pares atómicos</li>
+<li>Água/lava a fluir e waterlogging</li>
+<li>Redstone copia o <strong>interruptor</strong>; cada cópia dispara o próprio pistão</li>
+<li>Banners, heads, vasos, lectern, jukebox, spawner, placas</li>
+<li>Item frames</li>
+<li>Portais do Nether e do End</li>
+<li>Árvores com bonemeal, fogo, crescimento de plantações</li>
+<li>Areia/gravel só se ficarem de pé</li>
+<li>Colunas de scaffolding/cana/cacto sem chuva de itens</li>
+<li>Explosões e TNT primado</li>
+<li>Eco de disco no jukebox</li>
+<li>Clones de mobs</li>
+</ul>
+<h3>Comandos (cheats / OP)</h3>
+<ul>
+<li><code>/wce help</code> — lista de comandos</li>
+<li><code>/wce pause</code> — pausa gravação e cópias</li>
+<li><code>/wce resume</code> — volta a copiar</li>
+<li><code>/wce reset</code> — esquece o padrão (blocos já copiados ficam)</li>
+<li><code>/wce status</code> — estado, edições, portais, baús, clones</li>
+<li><code>/wce verify</code> — corrige registros num raio de 16</li>
+</ul>
+<p>Idioma: <strong>inglês</strong> por padrão. Se o jogo estiver em <strong>Português (Brasil)</strong>, o chat usa pt-BR.</p>
+<h3>Instalação</h3>
+<p>Escolha o jar da sua versão: <strong>1.20.1</strong> (release), <strong>1.21.1</strong> (release), <strong>26.2</strong> (release), <strong>26.3</strong> snapshot / alpha.9 (alpha).</p>
+<ol>
+<li>Fabric Loader</li>
+<li>Fabric API da mesma versão</li>
+<li>Coloque o jar em <code>mods/</code></li>
+</ol>
+<p>Funciona em singleplayer e servidor dedicado. O cliente não precisa do mod para entrar num servidor.</p>
+<p>As cópias são limitadas (200 writes a cada 4 ticks, raio de 24 chunks) para o servidor integrado não cair o tick.</p>
+<h3>Créditos</h3>
+<p>Pack Bedrock original de <strong>TheLake</strong> — ThreeDonkeys studio.<br />
+Port Fabric publicado por <strong>mml</strong>.<br />
+Licença: <strong>MIT</strong></p>

@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "world_copies_everything",
+	"version": "${version}",
+	"name": "World Copies Everything",
+	"description": "Every block you place, break or change repeats across the infinite world — portals, chests, signs and all.",
+	"authors": [
+		"mml",
+		"TheLake",
+		"ThreeDonkeys studio"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/world-copies-everything"
+	},
+	"license": "MIT",
+	"icon": "assets/world_copies_everything/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"studio.threedonkeys.wce.WorldCopiesEverything"
+		]
+	},
+	"mixins": [
+		"world_copies_everything.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
