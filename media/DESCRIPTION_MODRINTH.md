@@ -62,6 +62,7 @@ Pick the jar that matches your Minecraft version:
 |---|---|
 | **1.20.1** | Release |
 | **1.21.1** | Release |
+| **1.21.11** | Release |
 | **26.2** | Release |
 | **26.3** (snapshot / alpha.9) | Alpha |
 
@@ -135,6 +136,7 @@ Escolha o jar da sua versão do Minecraft:
 |---|---|
 | **1.20.1** | Release |
 | **1.21.1** | Release |
+| **1.21.11** | Release |
 | **26.2** | Release |
 | **26.3** (snapshot / alpha.9) | Alpha |
 

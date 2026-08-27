@@ -17,3 +17,5 @@ project(':v1.21.1').projectDir = file('versions/1.21.1')
 // 26.2 and 26.3 use Loom 1.17 (unobfuscated) and must be built as standalone projects:
 //   ./gradlew -p versions/26.2 jar
 //   ./gradlew -p versions/26.3 jar
+include ":v1.21.11"
+project(":v1.21.11").projectDir = file("versions/1.21.11")
