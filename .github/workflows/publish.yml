@@ -65,8 +65,8 @@ jobs:
           curseforge-id: 1665953
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           files: ${{ matrix.files }}
-          name: ${{ github.event.release.name }} - ${{ matrix.mc_version }}
-          version: ${{ github.event.release.tag_name }}+${{ matrix.mc_version }}
+          name: ${{ github.event.release.name }} - ${{ matrix.version }}
+          version: ${{ github.event.release.tag_name }}+${{ matrix.version }}
           loaders: fabric
           game-versions: ${{ matrix.mc_version }}
 
