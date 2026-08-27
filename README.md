@@ -51,7 +51,7 @@ To set up the workspace and start contributing to the mod:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/world-copies-everything.git
+   git clone https://github.com/mmlo/worldCopiesEverything.git
    cd world-copies-everything
    ```
 

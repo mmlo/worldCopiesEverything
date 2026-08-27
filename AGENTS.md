@@ -48,4 +48,5 @@
   <rule>Do not use Bukkit/Spigot APIs. This is a Fabric mod using yarn mappings.</rule>
   <rule>When modifying NBT or BlockStates, remember we target Minecraft 1.20.1/1.21 logic (check versions in gradle).</rule>
   <rule>Ensure all tick-delayed tasks use `Wce.scheduler().runLater()` rather than `Thread.sleep`.</rule>
+  <rule>Always autonomously test and validate implementation changes by running `./gradlew runServer` as a background task. This allows headless testing of mod initialization and crash detection. Only run `./gradlew runClient` (foreground GUI) when explicitly requested by the user.</rule>
 </guidelines>
