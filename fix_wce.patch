@@ -1,0 +1,15 @@
+--- versions/1.21.11/src/main/java/studio/threedonkeys/wce/pattern/WcePersistentState.java
++++ versions/1.21.11/src/main/java/studio/threedonkeys/wce/pattern/WcePersistentState.java
+@@ -25,5 +25,6 @@
+ 	private static final PersistentStateType<WcePersistentState> TYPE = new PersistentStateType<>(
++		ID,
+ 		WcePersistentState::new,
+-		WcePersistentState::fromNbt,
+-		null
++		net.minecraft.nbt.NbtCompound.CODEC.xmap(nbt -> WcePersistentState.fromNbt(nbt, null), state -> state.writeNbt(new NbtCompound(), null)),
++		net.minecraft.datafixer.DataFixTypes.LEVEL
+ 	);
+@@ -107,3 +108,2 @@
+ 
+-	@Override
+ 	public NbtCompound writeNbt(NbtCompound nbt, net.minecraft.registry.RegistryWrapper.WrapperLookup registryLookup) {

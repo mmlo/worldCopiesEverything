@@ -1,0 +1,18 @@
+--- versions/1.21.11/src/main/java/studio/threedonkeys/wce/recorders/ItemFrames.java
++++ versions/1.21.11/src/main/java/studio/threedonkeys/wce/recorders/ItemFrames.java
+@@ -71,3 +71,3 @@
+ 			if (!stack.isEmpty()) {
+-				nbt.put("Item", stack.encodeAllowEmpty(world.getRegistryManager()));
++				nbt.put("Item", ItemStack.OPTIONAL_CODEC.encodeStart(world.getRegistryManager().getOps(net.minecraft.nbt.NbtOps.INSTANCE), stack).getOrThrow(IllegalStateException::new));
+ 			}
+@@ -74,2 +74,2 @@
+-			nbt.putByte("Facing", (byte) frame.getHorizontalFacing().getId());
++			nbt.putString("Facing", frame.getHorizontalFacing().getId());
+ 
+@@ -103,2 +103,2 @@
+-			item = ItemStack.fromNbtOrEmpty(world.getRegistryManager(), record.entityNbt.getCompound("Item"));
++			item = ItemStack.OPTIONAL_CODEC.parse(world.getRegistryManager().getOps(net.minecraft.nbt.NbtOps.INSTANCE), record.entityNbt.get("Item")).result().orElse(ItemStack.EMPTY);
+ 		}
+@@ -109,2 +109,2 @@
+-		Direction facing = Direction.byId(record.entityNbt.getByte("Facing"));
++		Direction facing = Direction.byId(record.entityNbt.getString("Facing"));
