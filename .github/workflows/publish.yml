@@ -66,6 +66,7 @@ jobs:
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           files: ${{ matrix.files }}
           name: ${{ github.event.release.name }}
+          curseforge-name: ${{ github.event.release.name }} - ${{ matrix.version }}
           version: ${{ github.event.release.tag_name }}
           loaders: fabric
           game-versions: ${{ matrix.mc_version }}
