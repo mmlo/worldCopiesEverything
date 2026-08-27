@@ -1,5 +1,8 @@
 # World Copies Everything
 
+**[GitHub Repository & Source Code](https://github.com/mmlo/worldCopiesEverything)** | **[Issue Tracker](https://github.com/mmlo/worldCopiesEverything/issues)**
+
+
 A Fabric port of the Bedrock pack **World Copies Everything**: every block you place, break, or change becomes part of an infinite 16×16 repeating pattern. Walk thousands of blocks away — as new chunks load, the pattern is stamped into the terrain.
 
 Port Fabric do pack Bedrock **World Copies Everything**: cada bloco que você coloca, quebra ou altera entra num padrão infinito que se repete a cada 16×16. Ande milhares de blocos — ao carregar chunks novos, o padrão é aplicado no terreno.
