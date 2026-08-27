@@ -40,10 +40,10 @@ public final class Jukeboxes {
 		}
 		net.minecraft.component.type.JukeboxPlayableComponent component = stack.get(net.minecraft.component.DataComponentTypes.JUKEBOX_PLAYABLE);
 		var songPair = component.song();
-		if (songPair == null || songPair.entry().isEmpty()) return;
-		var song = songPair.entry().get().value();
-		if (song == null || song.soundEvent() == null) return;
-		SoundEvent sound = song.soundEvent().value();
+		if (songPair == null) return;
+		var songEntry = songPair.resolveEntry(world.getRegistryManager()).orElse(null);
+		if (songEntry == null || songEntry.value() == null || songEntry.value().soundEvent() == null) return;
+		SoundEvent sound = songEntry.value().soundEvent().value();
 		if (sound == null) return;
 		Identifier id = Registries.SOUND_EVENT.getId(sound);
 		if (id == null) {

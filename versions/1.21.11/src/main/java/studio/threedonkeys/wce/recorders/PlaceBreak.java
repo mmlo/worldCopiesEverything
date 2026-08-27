@@ -25,7 +25,7 @@ public final class PlaceBreak {
 
 	public static void register() {
 		PlayerBlockBreakEvents.BEFORE.register((world, player, pos, state, blockEntity) -> {
-			if (Wce.paused() || world.isClient || !(world instanceof ServerWorld serverWorld)) {
+			if (Wce.paused() || world.isClient() || !(world instanceof ServerWorld serverWorld)) {
 				return true;
 			}
 			if (!BlockCats.isColumnDependent(state.getBlock())) {
@@ -52,7 +52,7 @@ public final class PlaceBreak {
 		});
 
 		PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
-			if (Wce.paused() || world.isClient || !(world instanceof ServerWorld serverWorld) || !Wce.ready()) {
+			if (Wce.paused() || world.isClient() || !(world instanceof ServerWorld serverWorld) || !Wce.ready()) {
 				return;
 			}
 			onPlayerBreak(serverWorld, pos.toImmutable(), state);

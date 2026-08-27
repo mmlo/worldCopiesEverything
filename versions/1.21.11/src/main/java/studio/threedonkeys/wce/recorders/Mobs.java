@@ -90,7 +90,7 @@ public final class Mobs {
 					continue;
 				}
 				try {
-					Entity clone = entity.getType().create(world);
+					Entity clone = entity.getType().create(world, net.minecraft.entity.SpawnReason.COMMAND);
 					if (!(clone instanceof MobEntity mob)) {
 						if (clone != null) {
 							clone.discard();
@@ -138,7 +138,7 @@ public final class Mobs {
 		return reason == SpawnReason.NATURAL
 			|| reason == SpawnReason.BREEDING
 			|| reason == SpawnReason.SPAWNER
-			|| reason == SpawnReason.SPAWN_EGG
+			|| reason == SpawnReason.SPAWN_ITEM_USE
 			|| reason == SpawnReason.PATROL
 			|| reason == SpawnReason.REINFORCEMENT
 			|| reason == SpawnReason.MOB_SUMMONED;

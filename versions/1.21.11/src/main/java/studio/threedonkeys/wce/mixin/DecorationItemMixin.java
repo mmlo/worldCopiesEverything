@@ -26,7 +26,7 @@ public abstract class DecorationItemMixin {
 		World world = context.getWorld();
 		PlayerEntity player = context.getPlayer();
 		ItemStack stack = context.getStack();
-		if (player == null || world.isClient || Wce.isApplying()) {
+		if (player == null || world.isClient() || Wce.isApplying()) {
 			return;
 		}
 		if (!stack.isOf(Items.ITEM_FRAME) && !stack.isOf(Items.GLOW_ITEM_FRAME)) {

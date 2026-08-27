@@ -1,4 +1,5 @@
 package studio.threedonkeys.wce.pattern;
+import net.minecraft.world.PersistentStateType;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
@@ -21,10 +22,11 @@ public final class WcePersistentState extends PersistentState {
 		store.setDirtyCallback(this::markDirty);
 	}
 
-	private static final PersistentState.Type<WcePersistentState> TYPE = new PersistentState.Type<>(
+	private static final PersistentStateType<WcePersistentState> TYPE = new PersistentStateType<>(
+		ID,
 		WcePersistentState::new,
-		WcePersistentState::fromNbt,
-		null
+		net.minecraft.nbt.NbtCompound.CODEC.xmap(nbt -> WcePersistentState.fromNbt(nbt, null), state -> state.writeNbt(new NbtCompound(), null)),
+		net.minecraft.datafixer.DataFixTypes.LEVEL
 	);
 
 	public static WcePersistentState get(MinecraftServer server) {
@@ -32,27 +34,27 @@ public final class WcePersistentState extends PersistentState {
 		if (overworld == null) {
 			return null;
 		}
-		return overworld.getPersistentStateManager().getOrCreate(TYPE, ID);
+		return overworld.getPersistentStateManager().getOrCreate(TYPE);
 	}
 
 	public static WcePersistentState fromNbt(NbtCompound nbt, net.minecraft.registry.RegistryWrapper.WrapperLookup registryLookup) {
 		WcePersistentState state = new WcePersistentState();
-		if (!nbt.contains("edits", 9)) {
+		if (!nbt.contains("edits")) {
 			return state;
 		}
-		NbtList list = nbt.getList("edits", NbtElement.COMPOUND_TYPE);
+		NbtList list = nbt.getListOrEmpty("edits");
 		EditRecord previous = null;
 		state.store.setLastSeq(-1);
 		for (int i = 0; i < list.size(); i++) {
-			NbtCompound entry = list.getCompound(i);
-			String dimId = entry.getString("d");
-			int cx = entry.getInt("x");
-			int y = entry.getInt("y");
-			int cz = entry.getInt("z");
+			NbtCompound entry = list.getCompoundOrEmpty(i);
+			String dimId = entry.getString("d", "");
+			int cx = entry.getInt("x", 0);
+			int y = entry.getInt("y", 0);
+			int cz = entry.getInt("z", 0);
 			String key = dimId + "|" + cx + "," + y + "," + cz;
 			long seq = state.store.lastSeq() + 1;
 			state.store.setLastSeq(seq);
-			boolean grouped = entry.getBoolean("q") && previous != null;
+			boolean grouped = entry.getBoolean("q", false) && previous != null;
 			EditRecord record = new EditRecord(
 				key,
 				seq,
@@ -61,28 +63,28 @@ public final class WcePersistentState extends PersistentState {
 				cx,
 				y,
 				cz,
-				PatternStore.nbtToState(entry.getCompound("s"))
+				PatternStore.nbtToState(entry.getCompound("s").orElse(null))
 			);
-			if (entry.contains("n", NbtElement.COMPOUND_TYPE)) {
-				record.blockEntityNbt = entry.getCompound("n");
+			if (entry.contains("n")) {
+				record.blockEntityNbt = entry.getCompound("n").orElse(null);
 			}
-			if (entry.contains("e", NbtElement.STRING_TYPE)) {
-				record.entityType = Identifier.tryParse(entry.getString("e"));
+			if (entry.contains("e")) {
+				record.entityType = Identifier.tryParse(entry.getString("e", ""));
 			}
-			if (entry.contains("en", NbtElement.COMPOUND_TYPE)) {
-				record.entityNbt = entry.getCompound("en");
+			if (entry.contains("en")) {
+				record.entityNbt = entry.getCompound("en").orElse(null);
 			}
-			if (entry.contains("f", NbtElement.STRING_TYPE)) {
+			if (entry.contains("f")) {
 				try {
-					record.entityFacing = Direction.byName(entry.getString("f"));
+					record.entityFacing = Direction.byId(entry.getString("f", "north"));
 				} catch (Exception ignored) {
 				}
 			}
 			if (entry.contains("u")) {
-				record.sx = Math.max(1, entry.getInt("u"));
+				record.sx = Math.max(1, entry.getInt("u", 1));
 			}
 			if (entry.contains("v")) {
-				record.sz = Math.max(1, entry.getInt("v"));
+				record.sz = Math.max(1, entry.getInt("v", 1));
 			}
 			EditRecord old = state.store.pattern().put(key, record);
 			if (old != null) {
@@ -91,7 +93,7 @@ public final class WcePersistentState extends PersistentState {
 			state.store.editLog().add(record);
 			previous = record;
 		}
-		long savedSeq = nbt.getLong("lastSeq");
+		long savedSeq = nbt.getLong("lastSeq", 0L);
 		if (savedSeq > state.store.lastSeq()) {
 			state.store.setLastSeq(savedSeq);
 		}
@@ -99,7 +101,7 @@ public final class WcePersistentState extends PersistentState {
 		return state;
 	}
 
-	@Override
+	
 	public NbtCompound writeNbt(NbtCompound nbt, net.minecraft.registry.RegistryWrapper.WrapperLookup registryLookup) {
 		nbt.putLong("lastSeq", store.lastSeq());
 		NbtList list = new NbtList();

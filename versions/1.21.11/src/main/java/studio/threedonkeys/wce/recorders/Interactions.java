@@ -19,7 +19,7 @@ public final class Interactions {
 
 	public static void register() {
 		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-			if (!WceConfig.COPY_INTERACTIONS || world.isClient || Wce.paused() || !Wce.ready() || Wce.isApplying()) {
+			if (!WceConfig.COPY_INTERACTIONS || world.isClient() || Wce.paused() || !Wce.ready() || Wce.isApplying()) {
 				return ActionResult.PASS;
 			}
 			if (!(world instanceof ServerWorld serverWorld)) {

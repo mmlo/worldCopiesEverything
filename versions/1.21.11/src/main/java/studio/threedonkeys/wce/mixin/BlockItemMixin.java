@@ -21,7 +21,7 @@ public abstract class BlockItemMixin {
 			return;
 		}
 		World world = context.getWorld();
-		if (world.isClient || !(world instanceof ServerWorld serverWorld) || Wce.isApplying()) {
+		if (world.isClient() || !(world instanceof ServerWorld serverWorld) || Wce.isApplying()) {
 			return;
 		}
 		PlayerEntity player = context.getPlayer();

@@ -27,7 +27,7 @@ public final class ItemFrames {
 
 	public static void register() {
 		UseEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
-			if (world.isClient || Wce.paused() || !Wce.ready() || Wce.isApplying()) {
+			if (world.isClient() || Wce.paused() || !Wce.ready() || Wce.isApplying()) {
 				return ActionResult.PASS;
 			}
 			if (!(world instanceof ServerWorld serverWorld) || !(entity instanceof ItemFrameEntity frame)) {
@@ -41,7 +41,7 @@ public final class ItemFrames {
 			return ActionResult.PASS;
 		});
 		AttackEntityCallback.EVENT.register((player, world, hand, entity, hitResult) -> {
-			if (world.isClient || Wce.paused() || !Wce.ready() || Wce.isApplying()) {
+			if (world.isClient() || Wce.paused() || !Wce.ready() || Wce.isApplying()) {
 				return ActionResult.PASS;
 			}
 			if (!(world instanceof ServerWorld serverWorld) || !(entity instanceof ItemFrameEntity frame)) {
@@ -76,10 +76,10 @@ public final class ItemFrames {
 		NbtCompound nbt = new NbtCompound();
 		ItemStack stack = frame.getHeldItemStack();
 		if (!stack.isEmpty()) {
-			nbt.put("Item", stack.encodeAllowEmpty(world.getRegistryManager()));
+			nbt.put("Item", net.minecraft.item.ItemStack.OPTIONAL_CODEC.encodeStart(world.getRegistryManager().getOps(net.minecraft.nbt.NbtOps.INSTANCE), stack).getOrThrow(IllegalStateException::new));
 		}
 		nbt.putByte("ItemRotation", (byte) frame.getRotation());
-		nbt.putByte("Facing", (byte) frame.getHorizontalFacing().getId());
+		nbt.putString("Facing", frame.getHorizontalFacing().getId());
 		Identifier type = Registries.ENTITY_TYPE.getId(frame.getType());
 		Wce.store().recordEntity(world, pos, type, nbt, frame.getHorizontalFacing());
 	}
@@ -101,10 +101,10 @@ public final class ItemFrames {
 		ItemStack item = ItemStack.EMPTY;
 		int rotation = 0;
 		if (record.entityNbt != null && record.entityNbt.contains("Item")) {
-			item = ItemStack.fromNbtOrEmpty(world.getRegistryManager(), record.entityNbt.getCompound("Item"));
+			item = net.minecraft.item.ItemStack.OPTIONAL_CODEC.parse(world.getRegistryManager().getOps(net.minecraft.nbt.NbtOps.INSTANCE), record.entityNbt.get("Item")).result().orElse(net.minecraft.item.ItemStack.EMPTY);
 		}
 		if (record.entityNbt != null) {
-			rotation = record.entityNbt.getByte("ItemRotation");
+			rotation = record.entityNbt.getByte("ItemRotation", (byte)0);
 		}
 		if (existing != null) {
 			existing.setHeldItemStack(item, false);

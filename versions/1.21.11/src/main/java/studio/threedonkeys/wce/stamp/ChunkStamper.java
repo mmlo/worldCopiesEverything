@@ -70,7 +70,7 @@ public final class ChunkStamper {
 			ServerPlayerEntity player = players.get((patrolRotation + i) % players.size());
 			int budget = perPlayer;
 			try {
-				ServerWorld world = player.getServerWorld();
+				ServerWorld world = player.getEntityWorld();
 				int pcx = player.getBlockPos().getX() >> 4;
 				int pcz = player.getBlockPos().getZ() >> 4;
 				String dim = Wce.dimId(world);

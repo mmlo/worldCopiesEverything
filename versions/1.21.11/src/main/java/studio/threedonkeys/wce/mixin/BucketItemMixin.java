@@ -18,7 +18,7 @@ import studio.threedonkeys.wce.recorders.PlaceBreak;
 public abstract class BucketItemMixin {
 	@Inject(method = "placeFluid", at = @At("RETURN"))
 	private void wce$placeFluid(@Nullable PlayerEntity player, World world, BlockPos pos, @Nullable BlockHitResult hitResult, CallbackInfoReturnable<Boolean> cir) {
-		if (!cir.getReturnValue() || player == null || world.isClient || Wce.isApplying()) {
+		if (!cir.getReturnValue() || player == null || world.isClient() || Wce.isApplying()) {
 			return;
 		}
 		if (world instanceof ServerWorld serverWorld) {

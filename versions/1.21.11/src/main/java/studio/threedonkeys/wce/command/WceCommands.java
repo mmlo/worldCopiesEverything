@@ -24,7 +24,7 @@ public final class WceCommands {
 
 	private static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
 		dispatcher.register(CommandManager.literal("wce")
-			.requires(source -> source.hasPermissionLevel(2))
+			.requires(source -> source.getPermissions().hasPermission(net.minecraft.command.DefaultPermissions.GAMEMASTERS))
 			.executes(ctx -> sendHelp(ctx.getSource()))
 			.then(CommandManager.literal("help").executes(ctx -> sendHelp(ctx.getSource())))
 			.then(CommandManager.literal("pause").executes(ctx -> {
@@ -77,7 +77,7 @@ public final class WceCommands {
 					reply(source, WceMessages.verifyNeedPlayer());
 					return 0;
 				}
-				ServerWorld world = player.getServerWorld();
+				ServerWorld world = player.getEntityWorld();
 				BlockPos centre = player.getBlockPos();
 				int radius = 16;
 				int corrected = ChunkStamper.reconcileBox(

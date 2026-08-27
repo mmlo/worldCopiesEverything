@@ -300,6 +300,6 @@ public final class PatternStore {
 		if (nbt == null) {
 			return Blocks.AIR.getDefaultState();
 		}
-		return NbtHelper.toBlockState(Registries.BLOCK.getReadOnlyWrapper(), nbt);
+		return NbtHelper.toBlockState(Registries.BLOCK, nbt);
 	}
 }
