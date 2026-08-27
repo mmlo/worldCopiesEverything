@@ -11,7 +11,7 @@ jobs:
       matrix:
         include:
           - version: "1.20.1"
-            java: "17"
+            java: "21"
             task: ":build"
             files: "build/libs/world-copies*.jar"
             mc_version: "1.20.1"
