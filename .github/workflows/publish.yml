@@ -24,12 +24,15 @@ jobs:
             java: "21"
             task: "-p versions/26.2 build"
             files: "versions/26.2/build/libs/world-copies*.jar"
-            mc_version: "26.2"
+            mc_version: "1.21.1"
           - version: "26.3-snapshot"
             java: "21"
             task: "-p versions/26.3 build"
             files: "versions/26.3/build/libs/world-copies*.jar"
-            mc_version: "26.3-snapshot"
+            mc_version: "1.21.1"
+
+    permissions:
+      contents: write
 
     runs-on: ubuntu-latest
     steps:
