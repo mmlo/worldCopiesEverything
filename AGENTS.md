@@ -4,6 +4,12 @@
   <description>
     A Java port of a Bedrock script. Any block a player places, breaks, or interacts with is recorded and stamped infinitely across the world, repeating every 16 blocks (X and Z axes).
   </description>
+  <target_versions>
+    <version path="." java="17">1.20.1</version>
+    <version path="versions/1.21.1" java="21">1.21.1</version>
+    <version path="versions/26.2" java="21">26.2</version>
+    <version path="versions/26.3" java="21">26.3-snapshot</version>
+  </target_versions>
 </project>
 
 <architecture>
@@ -46,7 +52,7 @@
 
 <guidelines>
   <rule>Do not use Bukkit/Spigot APIs. This is a Fabric mod using yarn mappings.</rule>
-  <rule>When modifying NBT or BlockStates, remember we target Minecraft 1.20.1/1.21 logic (check versions in gradle).</rule>
+  <rule>When modifying NBT or BlockStates, remember we target Minecraft 1.20.1 and 1.21.1+ logic simultaneously (1.20.1, 1.21.1, 26.2, 26.3). Changes must be ported across their respective subdirectories.</rule>
   <rule>Ensure all tick-delayed tasks use `Wce.scheduler().runLater()` rather than `Thread.sleep`.</rule>
   <rule>Always autonomously test and validate implementation changes by running `./gradlew runServer` as a background task. This allows headless testing of mod initialization and crash detection. Only run `./gradlew runClient` (foreground GUI) when explicitly requested by the user.</rule>
 </guidelines>
