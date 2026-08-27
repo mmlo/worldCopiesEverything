@@ -1,5 +1,6 @@
 # World Copies Everything (Fabric Edition)
 
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-blue?logo=github)](https://github.com/mmlo/worldCopiesEverything) [![Issues](https://img.shields.io/badge/GitHub-Issues-red?logo=github)](https://github.com/mmlo/worldCopiesEverything/issues)
 A Java Fabric port of the original Bedrock script pack: **Minecraft But The World Copies Everything**.
 
 Every block a player **PLACES**, **BREAKS**, or **ALTERS** is duplicated **INFINITELY** across the world, repeating every 16 blocks on the X and Z axes. 
