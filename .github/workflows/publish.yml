@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - version: "1.20.1"
@@ -70,8 +71,8 @@ jobs:
           curseforge-id: 1665953
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
           files: ${{ matrix.files }}
-          name: ${{ github.event.release.name }} - ${{ matrix.version }}
-          curseforge-name: ${{ github.event.release.name }} - ${{ matrix.version }}
+          name: ${{ github.event.release.tag_name }} - ${{ matrix.version }}
+          curseforge-name: ${{ github.event.release.tag_name }} - ${{ matrix.version }}
           version: ${{ github.event.release.tag_name }}+${{ matrix.version }}
           loaders: fabric
           game-versions: ${{ matrix.mc_version }}
