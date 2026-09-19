@@ -65,7 +65,7 @@ Pick the jar that matches your Minecraft version:
 | **1.21.4** | Release |
 | **1.21.11** | Release |
 | **26.2** | Release |
-| **26.3** (all versions / snapshot / rc) | Release / Snapshot |
+| **26.3-snapshot** (all versions / snapshot / rc) | Release / Snapshot |
 
 Then:
 
@@ -140,7 +140,7 @@ Escolha o jar da sua versão do Minecraft:
 | **1.21.4** | Release |
 | **1.21.11** | Release |
 | **26.2** | Release |
-| **26.3** (todas versões / snapshot / rc) | Release / Snapshot |
+| **26.3-snapshot** (todas versões / snapshot / rc) | Release / Snapshot |
 
 Depois:
 

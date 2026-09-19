@@ -10,7 +10,7 @@
     <version path="versions/1.21.4" java="21">1.21.4</version>
     <version path="versions/1.21.11" java="21">1.21.11</version>
     <version path="versions/26.2" java="21">26.2</version>
-    <version path="versions/26.3" java="21">26.3</version>
+    <version path="versions/26.3" java="21">26.3-snapshot</version>
   </target_versions>
 </project>
 
