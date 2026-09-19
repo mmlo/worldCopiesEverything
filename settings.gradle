@@ -19,3 +19,5 @@ project(':v1.21.1').projectDir = file('versions/1.21.1')
 //   ./gradlew -p versions/26.3 jar
 include ":v1.21.11"
 project(":v1.21.11").projectDir = file("versions/1.21.11")
+include ":v1.21.4"
+project(":v1.21.4").projectDir = file("versions/1.21.4")

@@ -1,0 +1,22 @@
+{
+	"wce.welcome.title": " World Copies Everything",
+	"wce.welcome.tagline": "  Every block you change repeats every %s blocks · the pattern follows the whole map.",
+	"wce.welcome.empty": "  Pattern for this world: empty (nothing recorded yet).",
+	"wce.welcome.loaded": "  Loaded pattern: %s / %s edits.",
+	"wce.help.header": "  Commands  (cheats / OP required)",
+	"wce.help.help": "shows this list",
+	"wce.help.pause": "pauses recording and copies",
+	"wce.help.resume": "starts copying the world again",
+	"wce.help.reset": "forgets the pattern; blocks already copied stay",
+	"wce.help.status": "state, edits, portals, chests, clones",
+	"wce.help.verify": "fixes stale records in a 16-block radius around you",
+	"wce.cmd.pause": "Pause on. Nothing is recorded or stamped until /wce resume.",
+	"wce.cmd.resume": "Copying again. Everything you change goes back into the pattern.",
+	"wce.cmd.reset": "Pattern cleared. %s edits forgotten. Terrain already copied is left as-is.",
+	"wce.status.active": "ACTIVE",
+	"wce.status.paused": "PAUSED",
+	"wce.status.line": "%s  ·  pattern %s/%s  ·  nether %s  ·  end %s  ·  chests %s  ·  clones %s",
+	"wce.cmd.verify.player": "verify only runs when a player executes it — it uses the area around you.",
+	"wce.cmd.verify.done": "Checked a radius of %s. Records corrected: %s.",
+	"wce.cmd.unknown": "Unknown subcommand. Use /wce help."
+}

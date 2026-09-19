@@ -1,0 +1,22 @@
+{
+	"wce.welcome.title": " World Copies Everything",
+	"wce.welcome.tagline": "  Cada bloco que você altera se repete a cada %s blocos · o padrão percorre o mapa inteiro.",
+	"wce.welcome.empty": "  Padrão deste mundo: vazio (ainda não gravamos nada).",
+	"wce.welcome.loaded": "  Padrão carregado: %s / %s edições.",
+	"wce.help.header": "  Comandos  (exigem cheats / OP)",
+	"wce.help.help": "mostra esta lista",
+	"wce.help.pause": "pausa a gravação e as cópias",
+	"wce.help.resume": "volta a copiar o mundo",
+	"wce.help.reset": "esquece o padrão; blocos já copiados permanecem",
+	"wce.help.status": "estado, edições, portais, baús, clones",
+	"wce.help.verify": "corrige registros num raio de 16 ao seu redor",
+	"wce.cmd.pause": "Pausa ativa. Nada é gravado nem aplicado até /wce resume.",
+	"wce.cmd.resume": "Copiando de novo. Tudo que você alterar volta a entrar no padrão.",
+	"wce.cmd.reset": "Padrão limpo. %s edições esquecidas. O que já está no terreno não é desfeito.",
+	"wce.status.active": "ATIVO",
+	"wce.status.paused": "PAUSA",
+	"wce.status.line": "%s  ·  padrão %s/%s  ·  nether %s  ·  end %s  ·  baús %s  ·  clones %s",
+	"wce.cmd.verify.player": "O verify só funciona se você executar — usa a área ao seu redor.",
+	"wce.cmd.verify.done": "Revisto um raio de %s. Registros corrigidos: %s.",
+	"wce.cmd.unknown": "Subcomando desconhecido. Use /wce help."
+}

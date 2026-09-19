@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"package": "studio.threedonkeys.wce.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"BlockItemMixin",
+		"BucketItemMixin",
+		"DecorationItemMixin",
+		"ExplosionMixin",
+		"MobEntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
