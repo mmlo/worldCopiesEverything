@@ -20,7 +20,7 @@ There is no finite grid of copies. Each edit is stored once at a canonical cell 
 - Pattern cap: **12,000** cells (oldest edits are forgotten first)
 - Saved with the world (every ~10 seconds)
 
-**Chests copy as empty blocks** — inventory stays local so copies never duplicate items.  
+**Chests copy as empty blocks by default** — inventory stays local to prevent unintended item duplication exploits (can be enabled with `/wce chests on`).  
 **Paintings are not copied.**  
 **Mobs** are mirrored only into the 8 neighbouring cells, last 60 seconds, cap at **64** live clones, and are never written to the world save.
 
@@ -46,6 +46,7 @@ There is no finite grid of copies. Each edit is stored once at a canonical cell 
 | Command | Effect |
 |---|---|
 | `/wce help` | Command list |
+| `/wce chests [on\|off]` | Toggle container item duplication (default: off) |
 | `/wce pause` | Stop recording and stamping |
 | `/wce resume` | Start copying again |
 | `/wce reset` | Forget the pattern (already-copied blocks stay) |
@@ -96,7 +97,7 @@ Não existe uma grelha finita de cópias. Cada alteração é gravada uma vez na
 - Limite do padrão: **12.000** células (as mais antigas são esquecidas primeiro)
 - Persistente no save do mundo (~a cada 10 s)
 
-**Baús copiam vazios** — o inventário fica só no original, para não duplicar itens.  
+**Baús copiam vazios por padrão** — o inventário fica só no original para evitar duplicação infinita de itens (pode ser ativado com `/wce chests on`).  
 **Pinturas não são copiadas.**  
 **Mobs** só nas 8 células vizinhas, duram 60 s, no máximo **64** clones vivos, e não entram no save.
 
@@ -121,6 +122,7 @@ Não existe uma grelha finita de cópias. Cada alteração é gravada uma vez na
 | Comando | Efeito |
 |---|---|
 | `/wce help` | Lista de comandos |
+| `/wce chests [on\|off]` | Ativa/desativa cópia de itens em baús (padrão: desligado) |
 | `/wce pause` | Pausa gravação e cópias |
 | `/wce resume` | Volta a copiar |
 | `/wce reset` | Esquece o padrão (blocos já copiados ficam) |

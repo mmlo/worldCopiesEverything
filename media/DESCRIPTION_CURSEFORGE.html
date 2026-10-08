@@ -14,7 +14,7 @@
 <li>Pattern cap: <strong>12,000</strong> cells (oldest edits are forgotten first)</li>
 <li>Saved with the world (every ~10 seconds)</li>
 </ul>
-<p><strong>Chests copy as empty blocks</strong> — inventory stays local so copies never duplicate items.<br />
+<p><strong>Chests copy as empty blocks by default</strong> — inventory stays local to prevent unintended item duplication exploits (can be enabled with <code>/wce chests on</code>).<br />
 <strong>Paintings are not copied.</strong><br />
 <strong>Mobs</strong> are mirrored only into the 8 neighbouring cells, last 60 seconds, cap at <strong>64</strong> live clones, and are never written to the world save.</p>
 <h3>Features</h3>
@@ -37,6 +37,7 @@
 <h3>Commands (cheats / OP)</h3>
 <ul>
 <li><code>/wce help</code> — command list</li>
+<li><code>/wce chests [on|off]</code> — toggle container item duplication (default: off)</li>
 <li><code>/wce pause</code> — stop recording and stamping</li>
 <li><code>/wce resume</code> — start copying again</li>
 <li><code>/wce reset</code> — forget the pattern (already-copied blocks stay)</li>
@@ -69,7 +70,7 @@ License: <strong>MIT</strong></p>
 <li>Limite do padrão: <strong>12.000</strong> células (as mais antigas são esquecidas primeiro)</li>
 <li>Persistente no save do mundo (~a cada 10 s)</li>
 </ul>
-<p><strong>Baús copiam vazios</strong> — o inventário fica só no original, para não duplicar itens.<br />
+<p><strong>Baús copiam vazios por padrão</strong> — o inventário fica só no original para evitar duplicação infinita de itens (pode ser ativado com <code>/wce chests on</code>).<br />
 <strong>Pinturas não são copiadas.</strong><br />
 <strong>Mobs</strong> só nas 8 células vizinhas, duram 60 s, no máximo <strong>64</strong> clones vivos, e não entram no save.</p>
 <h3>Recursos</h3>
@@ -91,6 +92,7 @@ License: <strong>MIT</strong></p>
 <h3>Comandos (cheats / OP)</h3>
 <ul>
 <li><code>/wce help</code> — lista de comandos</li>
+<li><code>/wce chests [on|off]</code> — ativa/desativa cópia de itens em baús (padrão: desligado)</li>
 <li><code>/wce pause</code> — pausa gravação e cópias</li>
 <li><code>/wce resume</code> — volta a copiar</li>
 <li><code>/wce reset</code> — esquece o padrão (blocos já copiados ficam)</li>

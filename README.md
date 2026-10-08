@@ -20,19 +20,36 @@ The core mechanics of the reference project are fully implemented:
 * **Jukeboxes & Redstone**: Music discs echo to nearby copies. Redstone switches (levers, buttons) are copied, allowing the local redstone circuits at the copies to fire independently.
 * **NBT Data**: Banners, skulls, decorated pots, lecterns, and sign text/colors are perfectly matched.
 
-### Technical Differences & What is NOT implemented
+### Commands (cheats / OP)
+* `/wce help` — Command list
+* `/wce chests [on|off]` — Toggle container item duplication (default: disabled)
+* `/wce pause` — Stop recording and stamping
+* `/wce resume` — Start copying again
+* `/wce reset` — Forget the pattern (already-copied blocks stay)
+* `/wce status` — State, edits, portals, chests, clones
+* `/wce verify` — Fix stale records in a 16-block radius
+
+### Supported Versions
+* **1.20.1** (Release)
+* **1.21.1** (Release)
+* **1.21.4** (Release)
+* **1.21.11** (Release)
+* **26.2** (Release)
+* **26.3-snapshot** (All versions / snapshot / rc)
+
+### Technical Differences & Adaptations
 
 Due to fundamental engine differences between Minecraft Bedrock and Java Edition, the following adaptations were made:
 
 * **Dyed Cauldron Water**: **Not implemented**. In Bedrock, cauldrons hold custom dyed water via NBT data. In Java Vanilla, cauldrons only hold water, lava, or powder snow (using distinct blocks/states). There is no native support for custom dyed water inside cauldrons.
-* **Chest/Inventory Syncing**: **Not implemented (Intended)**. Just like the final version of the original Bedrock pack, syncing inventory contents was removed on purpose to prevent massive item duplication exploits. Chests, barrels, and shulker boxes copy as empty blocks.
+* **Chest/Inventory Syncing**: **Optional toggle (disabled by default)**. Just like the original Bedrock pack, syncing inventory contents is disabled by default to prevent massive item duplication exploits (chests, barrels, and shulker boxes copy as empty blocks). However, players who want full container replication can enable it dynamically using `/wce chests on` (or `/wce chests true`).
 * **Paintings**: **Not implemented (Intended)**. Explicitly excluded from being copied to prevent catastrophic entity-lag loops, matching the original pack's behavior.
 * **Item Frames**: In Bedrock, item frames are *blocks*. In Java, they are *entities*. The mod adapts this by tracking entity interactions to ensure frames, their items, and rotations are perfectly copied.
 * **Timing of Jukebox Echoes**: In Bedrock, the music echo fires in the exact same tick as the interaction. In Java, there is a deliberate 1-tick delay to ensure the Jukebox BlockEntity has successfully updated its internal state with the music disc before playing the sound to clients.
 
 ## Contributing
 
-We welcome community contributions! If you'd like to help improve the mod, please follow these guidelines:
+Community contributions are welcome! If you'd like to help improve the mod, please follow these guidelines:
 
 ### Reporting Issues
 * Check the existing issues to ensure it hasn't been reported yet.
