@@ -218,10 +218,10 @@ public final class PatternStore {
 		if (be == null) {
 			return null;
 		}
-		if (BlockCats.isContainer(world.getBlockState(pos).getBlock())) {
+		if (BlockCats.isContainer(world.getBlockState(pos).getBlock()) && !WceConfig.COPY_CONTAINER_INVENTORIES) {
 			return null;
 		}
-		NbtCompound nbt = be.createNbt();
+		NbtCompound nbt = be.createNbtWithIdentifyingData();
 		nbt.remove("x");
 		nbt.remove("y");
 		nbt.remove("z");

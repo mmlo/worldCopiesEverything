@@ -58,6 +58,7 @@ public final class WceMessages {
 		lines.add(cmdLine("/wce resume", "wce.help.resume"));
 		lines.add(cmdLine("/wce reset", "wce.help.reset"));
 		lines.add(cmdLine("/wce status", "wce.help.status"));
+		lines.add(cmdLine("/wce chests [on|off]", "wce.help.chests"));
 		lines.add(cmdLine("/wce verify", "wce.help.verify"));
 		lines.add(Text.literal(RULE).formatted(MUTED));
 		return lines;
@@ -103,6 +104,18 @@ public final class WceMessages {
 			Text.literal(String.valueOf(radius)).formatted(VALUE),
 			Text.literal(String.valueOf(corrected)).formatted(corrected > 0 ? WARN : OK)
 		).formatted(LABEL));
+	}
+
+	public static Text chestsStatus(boolean enabled) {
+		Text state = Text.translatable(enabled ? "wce.status.enabled" : "wce.status.disabled")
+			.formatted(enabled ? OK : WARN);
+		return prefix().append(Text.translatable("wce.cmd.chests.status", state).formatted(LABEL));
+	}
+
+	public static Text chestsToggled(boolean enabled) {
+		return prefix().append(Text.translatable(
+			enabled ? "wce.cmd.chests.enabled" : "wce.cmd.chests.disabled"
+		).formatted(enabled ? OK : WARN));
 	}
 
 	public static Text unknownCommand() {

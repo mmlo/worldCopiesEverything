@@ -25,6 +25,7 @@ public final class WceConfig {
 	public static final int SAVE_INTERVAL = 200;
 
 	public static final boolean COPY_INTERACTIONS = true;
+	public static boolean COPY_CONTAINER_INVENTORIES = false;
 
 	public static final boolean COPY_GROWN_STRUCTURES = true;
 	public static final int TREE_SCAN_RADIUS = 6;

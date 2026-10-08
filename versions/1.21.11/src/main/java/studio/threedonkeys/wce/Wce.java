@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import studio.threedonkeys.wce.pattern.PatternStore;
 import studio.threedonkeys.wce.pattern.WcePersistentState;
+import studio.threedonkeys.wce.recorders.Containers;
 import studio.threedonkeys.wce.recorders.ItemFrames;
 import studio.threedonkeys.wce.recorders.Jukeboxes;
 import studio.threedonkeys.wce.recorders.Mobs;
@@ -43,6 +44,7 @@ public final class Wce {
 		NaturalChanges.reset();
 		Jukeboxes.reset();
 		ItemFrames.reset();
+		Containers.reset();
 		LOGGER.info("[WCE] Loaded {} pattern edits.", store().size());
 	}
 
@@ -58,6 +60,8 @@ public final class Wce {
 		NaturalChanges.reset();
 		Jukeboxes.reset();
 		ItemFrames.reset();
+		Containers.reset();
+		WceConfig.COPY_CONTAINER_INVENTORIES = false;
 	}
 
 	public static void tick(MinecraftServer ticking) {

@@ -9,6 +9,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.PersistentState;
 import net.minecraft.world.World;
 import studio.threedonkeys.wce.Wce;
+import studio.threedonkeys.wce.WceConfig;
 
 public final class WcePersistentState extends PersistentState {
 	public static final String ID = "world_copies_everything";
@@ -81,6 +82,9 @@ public final class WcePersistentState extends PersistentState {
 		if (savedSeq > state.store.lastSeq()) {
 			state.store.setLastSeq(savedSeq);
 		}
+		if (nbt.contains("copyContainers")) {
+			WceConfig.COPY_CONTAINER_INVENTORIES = nbt.getBoolean("copyContainers");
+		}
 		Wce.LOGGER.info("[WCE] Restored {} pattern edits from the world save.", state.store.size());
 		return state;
 	}
@@ -88,6 +92,7 @@ public final class WcePersistentState extends PersistentState {
 	@Override
 	public NbtCompound writeNbt(NbtCompound nbt) {
 		nbt.putLong("lastSeq", store.lastSeq());
+		nbt.putBoolean("copyContainers", WceConfig.COPY_CONTAINER_INVENTORIES);
 		NbtList list = new NbtList();
 		EditRecord previousLive = null;
 		for (EditRecord record : store.editLog()) {

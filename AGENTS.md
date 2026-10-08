@@ -26,7 +26,7 @@
   <technical_details>
     <detail>Item Frames are treated as Entities in Java. We capture their interactions (Use/Attack) to clone them.</detail>
     <detail>Jukeboxes wait 1 tick for the BlockEntity to update before echoing sounds to clones.</detail>
-    <detail>Inventories (Chests, Shulkers) deliberately copy as empty blocks to avoid infinite item dupes.</detail>
+    <detail>Inventories (Chests, Shulkers) copy as empty blocks by default to avoid infinite item dupes, configurable via WceConfig.COPY_CONTAINER_INVENTORIES and /wce chests [true|false].</detail>
     <detail>Paintings are excluded completely to prevent entity-lag crashes.</detail>
     <detail>Mod uses Fabric API events, custom Mixins, and Minecraft server ticking.</detail>
   </technical_details>

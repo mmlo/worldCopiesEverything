@@ -4,6 +4,7 @@
 	"package": "studio.threedonkeys.wce.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
+		"BlockEntityMixin",
 		"BlockItemMixin",
 		"BucketItemMixin",
 		"DecorationItemMixin",

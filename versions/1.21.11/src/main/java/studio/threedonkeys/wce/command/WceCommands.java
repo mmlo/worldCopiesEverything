@@ -1,6 +1,7 @@
 package studio.threedonkeys.wce.command;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.BoolArgumentType;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
@@ -70,6 +71,17 @@ public final class WceCommands {
 				));
 				return 1;
 			}))
+			.then(CommandManager.literal("chests")
+				.executes(ctx -> {
+					reply(ctx.getSource(), WceMessages.chestsStatus(WceConfig.COPY_CONTAINER_INVENTORIES));
+					return 1;
+				})
+				.then(CommandManager.literal("on").executes(ctx -> setChests(ctx.getSource(), true)))
+				.then(CommandManager.literal("off").executes(ctx -> setChests(ctx.getSource(), false)))
+				.then(CommandManager.argument("enabled", BoolArgumentType.bool())
+					.executes(ctx -> setChests(ctx.getSource(), BoolArgumentType.getBool(ctx, "enabled")))
+				)
+			)
 			.then(CommandManager.literal("verify").executes(ctx -> {
 				ServerCommandSource source = ctx.getSource();
 				ServerPlayerEntity player = source.getPlayer();
@@ -89,6 +101,23 @@ public final class WceCommands {
 				return 1;
 			}))
 		);
+	}
+
+	private static int setChests(ServerCommandSource source, boolean enabled) {
+		WceConfig.COPY_CONTAINER_INVENTORIES = enabled;
+		if (!enabled) {
+			for (EditRecord record : Wce.store().pattern().values()) {
+				if (!record.dead && BlockCats.isContainer(record.state.getBlock())) {
+					record.blockEntityNbt = null;
+				}
+			}
+			Wce.store().markDirty();
+		}
+		if (Wce.persistent() != null) {
+			Wce.persistent().markDirty();
+		}
+		reply(source, WceMessages.chestsToggled(enabled));
+		return 1;
 	}
 
 	private static int sendHelp(ServerCommandSource source) {
